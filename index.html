@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="js/variables.js"></script>
+    <script src="js/functions.js"></script>
+  </head>
+  <body>
+    <main id="gallery">
+      <input type="text" id="searchbar" name="searcher" placeholder="Search" value="">
+
+      <div id="grid-container">
+        <script type="text/javascript">
+          galleryCreator();
+        </script>
+      </div>
+      <div id="lightbox-container">
+        <a id="prev">&#10094;</a>
+        <div id="lightbox-content">
+          <!-- <script type="text/javascript">
+            // lightboxCreator();
+          </script> -->
+        </div>
+        <span class="close" onclick="closeBox()">X</span>
+        <a id="next">&#10095;</a>
+      </div>
+    </main>
+    <script type="text/javascript">
+      search = document.getElementById("searchbar");
+      search.addEventListener("keyup", searcher);
+    </script>
+  </body>
+</html>

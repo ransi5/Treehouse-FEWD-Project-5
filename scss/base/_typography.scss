@@ -1,0 +1,12 @@
+* {
+  @include universal($fonfam:$fontfamily);
+}
+
+body{
+  width: 100%;
+}
+
+main{
+  width: $mainwidth;
+  margin: auto;
+}

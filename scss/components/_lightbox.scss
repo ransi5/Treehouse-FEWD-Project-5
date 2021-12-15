@@ -1,0 +1,79 @@
+
+#lightbox-container{
+  transform: scale(.01);
+  background-color: $litboxbakcol;
+  position: fixed;
+  top: $litboxtop;
+  left: $litboxleft;
+  width: 100%;
+  height: calc((100% / 4) * 3);
+  display: grid;
+  grid-template-columns: $gridtempcol;
+  grid-template-rows: $gridtemprow;
+  grid-template-areas: $gridtempmap;
+  visibility: hidden;
+}
+
+.nav-item{
+  color: $fontcolor;
+  font-size: $navfontsiz;
+  cursor: pointer;
+  &:hover{
+    color: red;
+    transform: scale(1.2);
+    transition: all 1s;
+  }
+}
+
+#prev{
+  grid-area: prev;
+  @extend .nav-item;
+  margin: auto;
+}
+
+.close{
+  grid-area: close;
+  @extend .nav-item;
+  margin: 8px auto auto;
+}
+
+#next{
+  grid-area: next;
+  @extend .nav-item;
+  margin: auto;
+}
+
+#lightbox-content{
+  width: 100%;
+  min-height: 100%;
+  grid-area: content;
+  display: flex;
+  & .light-item{
+    min-width: 100%;
+    opacity: 0;
+  }
+  & figure{
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    & figcaption{
+      position: relative;
+      width: 100%;
+      text-align: center;
+      align-self: flex-end;
+      padding: 5px 10px;
+      color: $fontcolor;
+      background-color: $captbackcolor
+    }
+  }
+  & img {
+    position: absolute;
+    width: $imgwidth;
+    height: 100%;
+  }
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}

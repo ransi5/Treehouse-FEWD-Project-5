@@ -1,0 +1,12 @@
+#grid-container, #result{
+  margin: 50px auto;
+  transform: scale(1);
+  @include gallerygrid(300px, 10px);
+  & img{
+    width: 100%;
+    cursor: pointer;
+  }
+  & figure{
+    margin: 0px;
+  }
+}

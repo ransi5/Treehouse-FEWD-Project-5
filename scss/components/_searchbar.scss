@@ -1,0 +1,29 @@
+.hide{
+  visibility: hidden;
+}
+
+.show{
+  visibility: visible;
+}
+
+#searchbar{
+  display: block;
+  outline:none;
+  margin: $searmargin;
+  padding: $searpad;
+  width: 80%;
+  height: $searheight;
+  font-size: $searfontsiz;
+  box-shadow: $searshadow;
+  @include roundy($prbrdrrad, border, 2px solid $searchbrdrcolor);
+  @media (min-width: $mqbreak) {
+      width: 40%;
+    }
+  &:hover, &:active{
+    border-color: $hovbrdrcol;
+    box-shadow: $hovshadow;
+    cursor: pointer;
+    transform: scaleX(1.1);
+    transition: all 1s;
+  }
+}

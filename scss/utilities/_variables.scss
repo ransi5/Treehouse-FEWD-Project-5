@@ -1,0 +1,42 @@
+$fontfamily: 'Nunito', sans-serif;
+$fontcolor: white;                //Default font
+
+//Main Element Variables================================================//
+
+$mainwidth: 90%;                                //Main element width
+
+// Primary Variables ===================================================//
+
+$prbrdrrad: 8px;                                  //Primary Border Radius
+
+
+//Search BAr variables======================================================//
+
+$searchbrdrcolor: #4169e1;                        // applied to border of search bar
+$searmargin: 50px auto 25px;                      //Searchbar Margins
+$searheight: 2.5em;                               // Search bar $searheight
+$searpad: 5px 12px;                               // Search Bar padding
+$searfontsiz: 1.25em;                             // Search bar font size
+$searshadow: 1px 1px 10px $searchbrdrcolor;        // box shadow
+$hovbrdrcol: #32cd32;                             // border color on hover
+$hovshadow: 1px 1px 7px $hovbrdrcol;              // Border shadow on hover
+
+// Grid=====================================================================//
+
+$gridmargin: 50px auto;
+$litboxbakcol: black;
+$litboxtop: 150px;
+$litboxleft: 0px;
+$gridtempcol: 5% 1fr 5%;
+$gridtemprow: repeat(3, 1fr);
+$gridtempmap: '.    content close'
+'prev content next'
+'.    content .';
+$navfontsiz: 36px;
+$captbackcolor: rgb(0, 0, 0, .5);
+$imgwidth: 90%;
+
+
+// Media query==============================================================//
+
+$mqbreak: 768px;
