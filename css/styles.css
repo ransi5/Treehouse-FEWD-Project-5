@@ -389,7 +389,7 @@ main {
   margin: 50px auto;
   transform: scale(1);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-flow: row;
   grid-gap: 10px;
 }
@@ -405,10 +405,10 @@ main {
   transform: scale(0.01);
   background-color: black;
   position: fixed;
-  top: 150px;
+  top: 0px;
   left: 0px;
   width: 100%;
-  height: 75%;
+  height: 100%;
   display: grid;
   grid-template-columns: 5% 1fr 5%;
   grid-template-rows: repeat(3, 1fr);
@@ -475,6 +475,31 @@ main {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.next {
+  animation: prev 0.4s;
+}
+
+.prev {
+  animation: next 0.4s;
+}
+
+@keyframes next {
+  from {
+    transform: translate(105%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+@keyframes prev {
+  from {
+    margin-left: 0%;
+  }
+  to {
+    margin-left: -100%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

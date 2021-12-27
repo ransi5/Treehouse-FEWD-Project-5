@@ -9,18 +9,12 @@
       onclick=\"photoclick(${x})\"></figure>`;
     };
   }
+  // document.getElementById("next").addEventListener('click', (event)=>{
+  //   console.log((event.target.id));
+  //   document.getElementById('image').style.animation = 'prev 1s';
+  //
+  // })
 
-  // function lightboxCreator(){
-  //   for (let i = 0; i < photos.length; i++) {
-  //     let img = photos[i];
-  //     let imgDesc = photoDesc[i];
-  //     let imgCapt = photoCapt[i];
-  //     let lightbox = document.getElementById("lightbox-content");
-  //     let x = 1 + i;
-  //     lightbox.innerHTML += `<figure id=\"item-${x}\" class=\"light-item\"><img src=\"photos/${img}.jpg\" alt=\"${imgDesc}\">
-  //     <figcaption>${imgCapt}</figcaption></figure>`;
-  //   };
-  // }
   function gridscale() {
     let grid = document.getElementById("grid-container");
     if (!grid.getAttribute('transform')) {
@@ -30,7 +24,7 @@
     }
   }
 
-  function photoclick(id) {
+  function photoclick(id, event) {
     let i = id - 1;
     let q = id + 1;
     let img = photos[i];
@@ -39,22 +33,30 @@
     let lightbox = document.getElementById("lightbox-content");
     let prev = document.getElementById("prev");
     let next = document.getElementById("next");
+    let pic = document.querySelector("#lightbox-content img");
     const lightBox = document.getElementById("lightbox-container");
     let x = `item-${id}`;
 
-    while (lightbox.hasChildNodes()) {
-        lightbox.removeChild(lightbox.firstChild);
-    }
-    gridscale();
 
+    if (document.getElementById('image') != null) {
+      console.log(document.getElementById('image') != null)
+      document.getElementById('image').className = '';
+      document.getElementById('image').className = 'next';
+    }
     setTimeout(function(){
-      lightbox.innerHTML += `<figure id=\"item-${id}\" class=\"light-item\"><img src=\"photos/${img}.jpg\" alt=\"${imgDesc}\">
-      <figcaption>${imgCapt}</figcaption></figure>`;
+      while (lightbox.hasChildNodes()) {
+          lightbox.removeChild(lightbox.firstChild);
+      }
+      gridscale();
+    }, 200)
+    setTimeout(function(){
+
+      lightbox.innerHTML += `<figure id=\"item-${id}\" class=\"light-item\"><img id="image" src=\"photos/${img}.jpg\" alt=\"${imgDesc}\" class="prev"><figcaption>${imgCapt}</figcaption></figure>`;
       if (i == 0) {
         prev.style.visibility = "hidden";
       } else if ( i > 0 ) {
         prev.style.visibility = "visible";
-        prev.setAttribute("onclick", `photoclick(${i})`);
+        prev.setAttribute("onclick", `photoclick(${i}, event)`);
       }
       if (id == photos.length) {
         next.style.visibility = "hidden";
@@ -104,7 +106,7 @@ function searcher(){
       document.getElementById("result").remove();
       lightbox.style.visibility = "visible";
     }
-    console.log(document.getElementById("result"));
+
     while (show.length > 0) {
       show.shift();
     }

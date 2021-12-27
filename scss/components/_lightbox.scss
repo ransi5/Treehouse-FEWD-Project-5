@@ -6,7 +6,7 @@
   top: $litboxtop;
   left: $litboxleft;
   width: 100%;
-  height: calc((100% / 4) * 3);
+  height: 100%;
   display: grid;
   grid-template-columns: $gridtempcol;
   grid-template-rows: $gridtemprow;
@@ -76,4 +76,21 @@
 .stop-scrolling {
     height: 100%;
     overflow: hidden;
+}
+
+.next{
+  animation: prev .4s;
+}
+
+.prev{
+  animation: next .4s;
+}
+@keyframes next {
+  from {transform: translate(105%);}
+  to {transform: translate(0%);}
+}
+
+@keyframes prev {
+  from {margin-left: 0%;}
+  to {margin-left: -100%;}
 }
