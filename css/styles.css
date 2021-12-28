@@ -477,20 +477,36 @@ main {
   overflow: hidden;
 }
 
-.next {
+.prev {
   animation: prev 0.4s;
 }
 
-.prev {
+.next {
   animation: next 0.4s;
+}
+
+.nextto {
+  animation: nextto 0.4s;
+}
+
+.prevto {
+  animation: prevto 0.4s;
 }
 
 @keyframes next {
   from {
-    transform: translate(105%);
+    margin-left: 105%;
   }
   to {
-    transform: translate(0%);
+    margin-left: 0%;
+  }
+}
+@keyframes nextto {
+  from {
+    margin-left: 0%;
+  }
+  to {
+    margin-left: 105%;
   }
 }
 @keyframes prev {
@@ -499,6 +515,14 @@ main {
   }
   to {
     margin-left: -100%;
+  }
+}
+@keyframes prevto {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
   }
 }
 

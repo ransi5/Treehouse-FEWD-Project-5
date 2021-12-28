@@ -78,19 +78,39 @@
     overflow: hidden;
 }
 
-.next{
+.prev{
   animation: prev .4s;
 }
 
-.prev{
+.next{
   animation: next .4s;
 }
-@keyframes next {
-  from {transform: translate(105%);}
-  to {transform: translate(0%);}
+
+.nextto{
+  animation: nextto .4s;
 }
+
+.prevto{
+  animation: prevto .4s;
+}
+
+@keyframes next {
+  from {margin-left: 105%;}
+  to {margin-left: 0%;}
+}
+
+@keyframes nextto {
+  from {margin-left: 0%;}
+  to {margin-left: 105%;}
+}
+
 
 @keyframes prev {
   from {margin-left: 0%;}
   to {margin-left: -100%;}
+}
+
+@keyframes prevto {
+  from {margin-left: -100%;}
+  to {margin-left: 0%;}
 }
