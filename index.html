@@ -16,15 +16,11 @@
       <input type="text" id="searchbar" name="searcher" placeholder="Search" value="">
 
       <div id="grid-container">
-        <script type="text/javascript">
-          galleryCreator();
-        </script>
+
       </div>
       <div id="lightbox-container">
         <a id="prev">&#10094;</a>
-        <div id="lightbox-content">
-
-        </div>
+        <div id="lightbox-content"></div>
         <span class="close" onclick="closeBox()">X</span>
         <a id="next">&#10095;</a>
       </div>
@@ -32,6 +28,9 @@
     <script type="text/javascript">
       search = document.getElementById("searchbar");
       search.addEventListener("keyup", searcher);
+    </script>
+    <script type="text/javascript">
+      galleryCreator();
     </script>
   </body>
 </html>

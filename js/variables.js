@@ -17,4 +17,3 @@ const photoCapt = ["I love hay bales. Took this snap on a drive through the coun
 
   var x;
   let search = document.getElementById("searchbar");
-  

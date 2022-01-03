@@ -6,10 +6,10 @@
       let grid = document.getElementById("grid-container");
       let x = 1 + i;
       grid.innerHTML += `<figure class=\"grid-item pic-${x}\"><img src=\"photos/thumbnails/${img}.jpg\" alt=\"${imgDesc}\"
-      onclick=\"photoclick(${x})\"></figure>`;
+      onclick=\"photoclick(${x}, event)\"></figure>`;
     };
   }
-  
+
   function gridscale() {
     let grid = document.getElementById("grid-container");
     if (!grid.getAttribute('transform')) {
@@ -28,34 +28,71 @@
     let lightbox = document.getElementById("lightbox-content");
     let prev = document.getElementById("prev");
     let next = document.getElementById("next");
-    let pic = document.querySelectorAll("#lightbox-content img");
+    let pic = document.querySelectorAll("#lightbox-content figure");
     const lightBox = document.getElementById("lightbox-container");
     let x = `item-${id}`;
 
-
-    if (document.getElementById('image') != null) {
-      if (event.target.id == 'prev') {
-      pic[0].className = '';
-      pic[0].className = 'prev';
-      }
-      if (event.target.id == 'next') {
-        pic[0].className = '';
-        pic[0].className = 'nextto';
-      }
+    if(event.target.tagName === "IMG") {
+      lightbox.innerHTML += `<figure id=\"item-${id}\" class=\"light-item next\"><img id="image" src=\"photos/${img}.jpg\"
+      alt=\"${imgDesc}\"><figcaption>${imgCapt}</figcaption></figure>`;
+      lightboxSetter();
+      initialSetup();
+      gridscale();
     }
 
 
+    if (event.target.id == 'prev') {
+      pic[0].className = '';
+      pic[0].className = 'light-item prev';
+      setTimeout(newSlide('next'), 500);
+      setTimeout(()=>{
+        pic[0].classList.add('hide');
+      }, 500)
+    }
 
-    setTimeout(function(){
-      while (lightbox.hasChildNodes()) {
-          lightbox.removeChild(lightbox.firstChild);
+    if (event.target.id == 'next') {
+      pic[0].className = '';
+      pic[0].className = 'light-item nextto';
+
+      setTimeout(newSlide('prevto'), 500);
+      setTimeout(()=>{
+        pic[0].classList.add('hide');
+      }, 500)
+    }
+
+    setTimeout(()=> {
+      if(pic.length > 0) {
+        oldSlide(lightbox);
       }
-      gridscale();
-    }, 390)
-    setTimeout(function(event){
+    },600)
 
-      lightbox.innerHTML += `<figure id=\"item-${id}\" class=\"light-item\"><img id="image" src=\"photos/${img}.jpg\"
-      alt=\"${imgDesc}\" class=\"${next}\"><figcaption>${imgCapt}</figcaption></figure>`;
+    function oldSlide(container) {
+      container.removeChild(container.firstChild);
+    }
+
+    function newSlide(cla) {
+
+      lightbox.innerHTML += `<figure id=\"item-${id}\" class=\"light-item ${cla}\"><img id="image" src=\"photos/${img}.jpg\"
+      alt=\"${imgDesc}\"><figcaption>${imgCapt}</figcaption></figure>`;
+      console.log('animation start');
+      lightboxSetter();
+      initialSetup();
+    }
+
+
+    function initialSetup(){
+      let sublightBox = document.getElementById(x);
+      lightBox.style.visibility = "visible";
+      sublightBox.style.visibility = "visible";
+      sublightBox.style.opacity = "1";
+      sublightBox.style.transition = "all .2s";
+
+      lightBox.style.transform = "scale(1)";
+      lightBox.style.transition = "transform 1s";
+      document.body.classList.add("stop-scrolling");
+    }
+
+    function lightboxSetter(){
 
       if (i == 0) {
         prev.style.visibility = "hidden";
@@ -69,17 +106,9 @@
         next.style.visibility = "visible";
         next.setAttribute("onclick", `photoclick(${q}, event)`);
       }
-      let sublightBox = document.getElementById(x);
-      lightBox.style.visibility = "visible";
-      sublightBox.style.visibility = "visible";
-      sublightBox.style.opacity = "1";
-      sublightBox.style.transition = "all .2s";
-    },390);
+    }
+}
 
-    lightBox.style.transform = "scale(1)";
-    lightBox.style.transition = "transform 1s";
-    document.body.classList.add("stop-scrolling");
-  }
 
   function closeBox() {
     let light = document.getElementById("lightbox-container");
@@ -107,13 +136,14 @@
 
 function searcher(){
   let searchtext = search.value.toLowerCase();
-  let searchfield = photoDesc;
+  let searchfield = photoCapt;
   let lightbox = document.getElementById("grid-container");
   let resultbox = document.getElementById("result");
 
   let hide = [];
   let show = [];
   if ( searchtext != '' ) {
+    lightbox.style.visibility = 'hidden';
     if (document.getElementById("gallery").contains(document.getElementById("result"))) {
       document.getElementById("result").remove();
     }
